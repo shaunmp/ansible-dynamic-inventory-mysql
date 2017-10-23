@@ -9,16 +9,16 @@ It was written because we maintain a lot of servers and static inventory files d
 Simply call the script like the following
 
 ```
-ansible-playbook -i mysql.py
+ansible-playbook -i inventory.py
 # or
-ansible -i mysql.py
+ansible -i inventory.py
 ```
 
 Limitations also work
 
 ```
-ansible-playbook -i mysql.py --limit foo.bar.com
-ansible-playbook -i mysql.py --limit groupFoo
+ansible-playbook -i inventory.py --limit foo.bar.com
+ansible-playbook -i inventory.py --limit groupFoo
 ```
 
 ## Setup
