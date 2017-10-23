@@ -9,6 +9,7 @@ import configparser
 import os
 import pprint
 import sys
+from distutils.util import strtobool
 from json import JSONDecodeError
 
 import pymysql
@@ -65,7 +66,7 @@ class InventoryCtl(object):
                                   help='Add multiple Variables to an entire Group')
 
         # Hosts
-        parser_host = subparsers.add_parser('host', help='Create or Update a host')
+        parser_host = subparsers.add_parser('host', help='Add , Update or Delete a host')
         parser_host.add_argument('-U', '--update', action='store_true',
                                  help='Enable Update mode. In this mode, the existing Host will be updated')
         parser_host.add_argument('-n', '--name',
@@ -81,16 +82,13 @@ class InventoryCtl(object):
                                  help='Add/Edit multiple Variables to an entire Host, \
                                  e.g. ssh_user, ssh_password, ssh_key. \
                                  If val is `%s`, the variable will be removed.' % VAR_DEL_MARK)
+        parser_host.add_argument('-d', '--delete', action='store_true',
+                                 help='Delete host')
         # List Hosts && Groups
         parser_list = subparsers.add_parser('ls', help='List the Hosts or groups that match one or more patterns')
         parser_list.add_argument('-g', '--group', action='store_true', help='Whether to show Groups or not')
         parser_list.add_argument('-r', '--regular', help='Searching condition: regular expressions,default=*',
                                  default='*')
-
-        # Delete Host or Groups
-        parser_del = subparsers.add_parser('del', help='Delete the Host or Group that with its Id')
-        parser_del.add_argument('-i', '--id', type=int,
-                                help='Host or Group Id', required=True)
 
         if len(sys.argv[1:]) == 0:
             parser.print_help()
@@ -99,15 +97,13 @@ class InventoryCtl(object):
 
     def run_command(self):
         self._connect()
-        print('Command: %s' % self.args.cmd)
+        print('[Command]: %s' % self.args.cmd)
         if self.args.cmd == 'host':
             self._cmd_host()
         elif self.args.cmd == 'group':
             self._cmd_group()
         elif self.args.cmd == 'ls':
             self._cmd_ls()
-        elif self.args.cmd == 'del':
-            self._cmd_del()
         else:
             print('Invalid instruction.')
         self._disconnect()
@@ -124,16 +120,27 @@ class InventoryCtl(object):
         # Fetch the data
         cursor = self.conn.cursor(pymysql.cursors.DictCursor)
 
+        def _delete(id):
+            print("Remove host from groups")
+            rows = cursor.execute("""DELETE FROM `hostgroups` WHERE `hostgroups`.`host_id` = %d;""" % id)
+            print('Affected rows: %d' % rows)
+
+            print('Delete host: id = %d' % id)
+            rows = cursor.execute("""DELETE FROM `host` WHERE `host`.`id`  = %d;""" % id)
+            print('Affected rows: %d' % rows)
+
+            self.conn.commit()
+
         # if set group name [-g/--group]
         # convert group name to group id
         if self.args.group is not None:
             sql = "SELECT * FROM `group` WHERE `group`.`name` = '%s'"
-            cursor.execute(sql, self.args.group)
+            cursor.execute(sql % self.args.group)
             groupdata = cursor.fetchone()
             if groupdata is None:
                 raise Exception('Group name does not exist. ', self.args.group)
             else:
-                print(groupdata)
+                print('Assign to group: %s [id=%d]' % (groupdata['name'], groupdata['id']))
                 host['group'] = groupdata['id']
         else:
             host['group'] = None
@@ -147,26 +154,39 @@ class InventoryCtl(object):
         cursor.execute(sql % host['host'])
         hostdata = cursor.fetchone()
         if hostdata is None:
-            # Insert a new host
-            if self.args.name:
-                host[self.facts_hostname_var] = self.args.name
+            affected_rows = 0
             # combination variables
             if self.args.variable is not None:
                 host['variables'] = json.dumps({item[0]: item[1] for item in self.args.variable})
+            else:
+                host['variables'] = None
 
+            print('Add host: %s %s %s %d' % (host['host'], host['hostname'], host['variables'], self.args.enabled))
             sql = """INSERT INTO `host` 
                   (`host`, `hostname`, `variables`, `enabled`) VALUES 
                   ('%s', '%s', '%s', %d);"""
-            cursor.execute(sql % (host['host'], host['hostname'], host['variables'], self.args.enabled))
+            affected_rows += cursor.execute(
+                sql % (host['host'], host['hostname'], host['variables'], self.args.enabled))
             if host['group'] is not None:
                 # Add group
                 lastrowid = cursor.lastrowid
                 sql = """INSERT INTO `hostgroups` 
                       (`host_id`, `group_id`) VALUES 
                       (%d, %d);"""
-                cursor.execute(sql % (lastrowid, host['group']))
+                affected_rows += cursor.execute(sql % (lastrowid, host['group']))
             self.conn.commit()
+            print('Affected rows: %d' % affected_rows)
         else:
+            # Delete host
+            if self.args.delete is True:
+                if self._prompt("Are you sure you want to delete the host: %s[%s] ?! \
+                                \nAfter deleting the data will not be restored!! " % (
+                        hostdata['host'], hostdata['hostname'])):
+                    _delete(hostdata['host_id'])
+                else:
+                    print('User canceled the operation.')
+                return
+
             # Update host
             if self.args.update:
                 print('Update mode')
@@ -230,9 +250,6 @@ class InventoryCtl(object):
     def _cmd_ls(self):
         pass
 
-    def _cmd_del(self):
-        pass
-
     def _connect(self):
         if not self.conn:
             self.conn = pymysql.connect(**self.myconfig)
@@ -240,6 +257,16 @@ class InventoryCtl(object):
     def _disconnect(self):
         if self.conn:
             self.conn.close()
+
+    def _prompt(self, query):
+        sys.stdout.write('''%s [y/n]: ''' % query)
+        val = input()
+        try:
+            ret = strtobool(val)
+        except ValueError:
+            sys.stdout.write('Please answer with a y/n\n')
+            return self._prompt(query)
+        return ret
 
 
 InventoryCtl()

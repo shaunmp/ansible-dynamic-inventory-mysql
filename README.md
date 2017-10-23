@@ -5,7 +5,7 @@ This is a [Dynamic Inventory](http://docs.ansible.com/ansible/intro_dynamic_inve
 It was written because we maintain a lot of servers and static inventory files did not meet our demand, and we like MySQL.
 
 ## Usage
-
+### Work with ansible and ansible-playbook
 Simply call the script like the following
 
 ```
@@ -19,6 +19,31 @@ Limitations also work
 ```
 ansible-playbook -i inventory.py --limit foo.bar.com
 ansible-playbook -i inventory.py --limit groupFoo
+```
+
+### Manager inventory Database 
+#### Add host
+Add a new host 
+- -H: set host dns `my.host.domain`, can also set ip address
+- [-g]: set group name is `my`, otherwise host will add to group called `ungrouped` 
+- [-v key val]: 2 sets of variables { var0:val0, var1:val1 }
+- See details: `python inventoryctl.py host -h` 
+```
+$ python inventoryctl.py host -H my.host.domain -g my -v var0 val0 -v var1 val1
+Command: host
+{'enabled': 1, 'variables': None, 'id': 1, 'name': 'my'}
+```
+
+#### Update host 
+- -H: which host will be update
+- -U: enter update mode, otherwise only view the host
+- See details: `python inventoryctl.py host -h` 
+```
+$ python inventoryctl.py host -H my.host.domain -U -v var2 val2
+Command: host
+Update mode
+set variables to {"var1": "val1", "var0": "val0", "var2": "val2"}
+Update my.host.domain affected rows: 1
 ```
 
 ## Setup
