@@ -133,7 +133,7 @@ class MySQLInventory(object):
             cursor.execute(sql, groupname)
             groupinfo = cursor.fetchone()
             self.inventory[groupname] = dict()
-            if groupinfo['variables'] and groupinfo['variables'].strip():
+            if groupinfo is not None and groupinfo['variables'] and groupinfo['variables'].strip():
                 try:
                     self.inventory[groupname]['vars'] = json.loads(groupinfo['variables'])
                     self.inventory[groupname]['hosts'] = list()
