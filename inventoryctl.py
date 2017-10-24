@@ -5,6 +5,7 @@ Created on 19/10/2017
 @author: askdaddy
 """
 import argparse
+import ast
 import configparser
 import os
 import pprint
@@ -60,10 +61,15 @@ class InventoryCtl(object):
         parser_group = subparsers.add_parser('group', help='Create or Update a Group')
         parser_group.add_argument('-U', '--update', action='store_true',
                                   help='Enable Update mode. In this mode, the existing Group will be updated')
-        parser_group.add_argument('-n', '--name', help='Name of the Group', required=True)
-        parser_group.add_argument('-p', '--parent', help='Name of parent Group')
+        parser_group.add_argument('-n', '--name', required=True,
+                                  help='Name of the Group')
+        parser_group.add_argument('-p', '--parent',
+                                  help='Name of parent Group')
+        parser_group.add_argument('-e', '--enabled', type=int, default=1, choices=[0, 1],
+                                  help='Whether to enable this Group')
         parser_group.add_argument('-v', '--variable', action='append', nargs=2, metavar=('key', 'val'),
-                                  help='Add multiple Variables to an entire Group')
+                                  help='Add multiple Variables to an entire Group \
+                                  If val is `%s`, the variable will be removed.' % VAR_DEL_MARK)
 
         # Hosts
         parser_host = subparsers.add_parser('host', help='Add , Update or Delete a host')
@@ -207,7 +213,7 @@ class InventoryCtl(object):
                 # modify variables
                 if self.args.variable is not None:
                     try:
-                        if hostdata['variables'] is not None:
+                        if ast.literal_eval(hostdata['variables']) is not None:
                             variables = json.loads(hostdata['variables'])
                             for var in self.args.variable:
                                 variables[var[0]] = var[1]
@@ -245,7 +251,102 @@ class InventoryCtl(object):
                 print('If you want to UPDATE this host, plz attach -U/--update argument')
 
     def _cmd_group(self):
-        pass
+        g = dict()
+        g['name'] = self.args.name
+
+        # a list store all the names to query
+        group_names = [g['name']]
+
+        if self.args.parent is not None:
+            group_names.append(self.args.parent)
+
+        cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        # fetch group info with name
+        sql = """SELECT `child`.`name`,`child`.`id`,`child`.`variables`,`child`.`enabled`,
+              `parent`.`name`,`parent`.`id` as `parent_id`, `parent`.`variables` as `parent_variables`, 
+              `parent`.`enabled` as `parent_enabled` 
+              FROM `group` `child`
+              LEFT JOIN `childgroups` ON `child`.`id` = `childgroups`.`child_id`
+              LEFT JOIN `group` `parent` ON `childgroups`.`parent_id` = `parent`.`id`
+              WHERE `child`.`name` IN (%s);"""
+        cursor.execute(sql % ("'" + "','".join(map(str, group_names)) + "'"))
+        groupdata = cursor.fetchall()
+
+        groups = {i['name']: i for i in groupdata}
+        if self.args.parent is not None and self.args.parent not in groups:
+            # parent does not exist
+            raise Exception('The specified group[%s] does not exist' % self.args.parent)
+
+        if g['name'] not in groups:
+            affected_rows = 0
+            # add a new group
+            print('Create mode')
+
+            # combination variables
+            if self.args.variable is not None:
+                g['variables'] = json.dumps({item[0]: item[1] for item in self.args.variable})
+            else:
+                g['variables'] = None
+
+            sql = """INSERT INTO `group` (`name`, `variables`, `enabled`) 
+                  VALUES ('%s', '%s', %d);"""
+            affected_rows += cursor.execute(sql % (g['name'], g['variables'], self.args.enabled))
+            lastrowid = cursor.lastrowid
+
+            if self.args.parent is not None:
+                # the new group has a parent
+                sql = """INSERT INTO `childgroups` (`child_id`,`parent_id`) VALUES 
+                      (%d,%d);"""
+                affected_rows += cursor.execute(sql % (lastrowid, groups[self.args.parent]['id']))
+            self.conn.commit()
+            print('Affected rows: %d' % affected_rows)
+            print('Add group id: %d' % lastrowid)
+
+        elif g['name'] in groups:
+            gdata = groups[g['name']]
+            affected_rows = 0
+
+            pprint.pprint('%s already exists' % g['name'])
+            # group already exists
+            if self.args.update:
+                print('Update mode')
+                # modify enabled
+                sql = """UPDATE `group` SET `enabled` = %d WHERE `id` = %d;"""
+                affected_rows += cursor.execute(sql % (self.args.enabled, gdata['id']))
+
+                # modify variables
+                if self.args.variable is not None:
+                    try:
+                        if ast.literal_eval(gdata['variables']) is not None:
+                            variables = json.loads(gdata['variables'])
+                            for var in self.args.variable:
+                                variables[var[0]] = var[1]
+                        else:
+                            variables = {item[0]: item[1] for item in self.args.variable}
+
+                        for _k, _v in variables.copy().items():
+                            if _v == VAR_DEL_MARK:
+                                variables.pop(_k, None)
+
+                        var_json = json.dumps(variables)
+                        sql = """UPDATE `group` SET `variables` = '%s' WHERE `group`.`id` = %d;"""
+                        affected_rows += cursor.execute(sql % (var_json, gdata['id']))
+                        print('set variables to %s' % var_json)
+                    except JSONDecodeError as e:
+                        print(e)
+                        raise Exception('Group does not have valid JSON', gdata['name'], gdata['variables'])
+                # modify parent group
+                if self.args.parent is not None:
+                    sql = """UPDATE `childgroups` SET `parent_id` = %d WHERE `child_id` = %d;"""
+                    affected_rows += cursor.execute(sql % (gdata['id'], groups[self.args.parent]['id']))
+
+                self.conn.commit()
+
+            else:
+                print('View mode')
+                pprint.pprint(groups[g['name']])
+                print(' ----- ')
+                print('If you want to UPDATE this group, plz attach -U/--update argument')
 
     def _cmd_ls(self):
         pass

@@ -190,7 +190,6 @@ class MySQLInventory(object):
         groupdata = cursor.fetchall()
 
         for group in groupdata:
-            pprint.pprint(group)
             self.process_group(group['parent'])
             if 'hosts' not in self.inventory[group['parent']]:
                 self.inventory[group['parent']] = {'hosts': self.inventory[group['parent']]}
