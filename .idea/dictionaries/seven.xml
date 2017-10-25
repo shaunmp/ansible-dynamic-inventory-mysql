@@ -3,9 +3,13 @@
     <words>
       <w>ansible</w>
       <w>askdaddy</w>
+      <w>gname</w>
+      <w>groupdata</w>
       <w>groupinfo</w>
       <w>hostdata</w>
+      <w>hostgroups</w>
       <w>kbits</w>
+      <w>lastrowid</w>
       <w>myconfig</w>
       <w>ungrouped</w>
     </words>
