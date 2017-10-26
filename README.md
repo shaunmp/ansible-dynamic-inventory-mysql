@@ -73,12 +73,9 @@ If no variables are needed either NULL it (actual MySQL `NULL` not the `string`)
 
 
 ## LICENSE
-```
-# Copyright (c) 2015 Productsup GmbH, Yorick Terweijden yt@products-up.de
-#
-# As it is mostly based on the original Cobbler Dynamic Inventory
-# https://github.com/ansible/ansible/blob/devel/contrib/inventory/cobbler.py
-# the same license, the GPL-3 applies.
-```
+
+As it was fork from [productsupcom/ansible-dyninv-mysql](https://github.com/productsupcom/ansible-dyninv-mysql),
+the same license, the GPL-3 applies.
+
 
 The [GPL-3](http://www.gnu.org/licenses/gpl-3.0.en.html) can be found under the link.
