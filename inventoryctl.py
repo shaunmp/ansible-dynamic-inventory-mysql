@@ -28,6 +28,7 @@ class InventoryCtl(object):
         self.myconfig = None
         self.facts_hostname_var = None
         self.conn = None
+        self.cursor = None
 
         self.args = []
         self.read_settings()
@@ -93,6 +94,7 @@ class InventoryCtl(object):
                                  help='Delete host')
         # List Hosts && Groups
         parser_list = subparsers.add_parser('ls', help='List the Hosts or groups that match one or more patterns')
+        parser_list.add_argument('-a', '--all', action='store_true', help='List all, including disabled')
         parser_list.add_argument('-g', '--group', action='store_true', help='Whether to show Groups or not')
         parser_list.add_argument('-r', '--regular', help='Searching condition: regular expressions,default=*',
                                  default='*')
@@ -164,7 +166,11 @@ class InventoryCtl(object):
             self._group_update(gname, groups)
 
     def _cmd_ls(self):
-        pass
+        # Default list all hosts and their groups info
+        if self.args.group:
+            self._list_groups()
+        else:
+            self._list_hosts()
 
     @property
     def __enabled(self):
@@ -398,6 +404,26 @@ class InventoryCtl(object):
             print(' ----- ')
             print('If you want to UPDATE this group, plz attach -U/--update argument')
 
+    def _list_hosts(self):
+        sql = """SELECT `host`.`host`,`host`.`hostname`,`host`.`variables` AS `vars`, 
+              `group`.`name` AS `group`,`group`.`variables` AS `group_vars` 
+              FROM `host` 
+              LEFT JOIN `hostgroups` ON `host`.id = `hostgroups`.`host_id` 
+              LEFT JOIN `group` ON `hostgroups`.`group_id` = `group`.`id`
+              WHERE `host`.`enabled` = 1 ORDER BY `host`.`host`;"""
+
+        if self.args.all:
+            sql = """SELECT * FROM `host` 
+                  LEFT JOIN `hostgroups` ON `host`.`id` = `hostgroups`.`host_id` 
+                  LEFT JOIN `group` ON `hostgroups`.`group_id` = `group`.`id` 
+                  ORDER BY `host`.`host`;"""
+
+        self.__cursor.execute(sql)
+        pprint.pprint(self.__cursor.fetchall())
+
+    def _list_groups(self):
+        pass
+
     def _connect(self):
         if not self.conn:
             self.conn = pymysql.connect(**self.myconfig)
@@ -418,7 +444,9 @@ class InventoryCtl(object):
 
     @property
     def __cursor(self):
-        return self.conn.cursor(pymysql.cursors.DictCursor)
+        if self.cursor is None:
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        return self.cursor
 
 
 InventoryCtl()
