@@ -136,7 +136,8 @@ class MySQLInventory(object):
             self.inventory[groupname] = dict()
             if groupinfo is not None and groupinfo['variables'] and groupinfo['variables'].strip():
                 try:
-                    self.inventory[groupname]['vars'] = json.loads(groupinfo['variables'])
+                    vs = json.loads(groupinfo['variables'])
+                    self.inventory[groupname]['vars'] = vs if vs is not None else {}
                     self.inventory[groupname]['hosts'] = list()
                 except JSONDecodeError as e:
                     print(e)
