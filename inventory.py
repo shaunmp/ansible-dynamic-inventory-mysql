@@ -23,6 +23,7 @@ Extended upon the Cobbler Inventory script.
 ######################################################################
 
 import argparse
+import ast
 import configparser
 import os
 import pprint
@@ -165,7 +166,7 @@ class MySQLInventory(object):
                 self.inventory[host['group']].append(host['host'])
 
             dns_name = host['host']
-            if host['host_vars'] and host['host_vars'].strip():
+            if host['host_vars'] and ast.literal_eval(host['host_vars']) is not None and host['host_vars'].strip():
                 try:
                     cleanhost = json.loads(host['host_vars'])
                 except JSONDecodeError as e:

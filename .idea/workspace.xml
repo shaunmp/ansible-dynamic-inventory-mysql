@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e76f0d2f-2399-4b31-8249-7976c814acaa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/seven.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/seven.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inventory.py" afterPath="$PROJECT_DIR$/inventory.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inventoryctl.py" afterPath="$PROJECT_DIR$/inventoryctl.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,48 +50,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="inventoryctl.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="inventoryctl.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inventoryctl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1209">
-              <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            <state relative-caret-position="298">
+              <caret line="491" column="44" lean-forward="false" selection-start-line="491" selection-start-column="44" selection-end-line="491" selection-end-column="44" />
               <folding>
                 <element signature="e#71#86#0" expanded="true" />
-                <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-                <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-                <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-                <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-                <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-                <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-                <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-                <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-                <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-                <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-                <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-                <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-                <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-                <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-                <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-                <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-                <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-                <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-                <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-                <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-                <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
+                <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+                <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+                <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+                <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+                <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+                <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+                <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+                <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+                <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+                <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+                <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+                <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+                <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+                <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+                <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+                <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+                <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+                <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+                <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+                <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+                <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="405">
-                <caret line="76" column="112" lean-forward="false" selection-start-line="76" selection-start-column="112" selection-end-line="76" selection-end-column="112" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="63" selection-end-column="64" />
+              <folding>
+                <element signature="e#46#64#0" expanded="true" />
+                <marker date="1509082372000" expanded="true" signature="1842:2161" ph="SELECT `gc`.... group" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,12 +99,12 @@
       <file leaf-file-name="inventory.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inventory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="127" column="8" lean-forward="false" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+            <state relative-caret-position="289">
+              <caret line="188" column="0" lean-forward="true" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
               <folding>
-                <marker date="1508854351000" expanded="true" signature="4367:4412" ph="SELECT varia... group" />
-                <marker date="1508854351000" expanded="true" signature="5364:5387" ph="SELECT * FRO... inventory" />
-                <marker date="1508854351000" expanded="true" signature="6353:6686" ph="SELECT `gpar... childgroups" />
+                <marker date="1509071600000" expanded="true" signature="4378:4423" ph="SELECT varia... group" />
+                <marker date="1509071600000" expanded="true" signature="5375:5398" ph="SELECT * FRO... inventory" />
+                <marker date="1509071600000" expanded="true" signature="6416:6749" ph="SELECT `gpar... childgroups" />
               </folding>
             </state>
           </provider>
@@ -139,6 +142,9 @@
       <find>IS None</find>
       <find>None</find>
       <find>JSON</find>
+      <find>cleanhost = json.loads(host['host_vars'])</find>
+      <find>eval</find>
+      <find>connect</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,9 +159,10 @@
         <option value="$PROJECT_DIR$/tables.sql" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/mysql.ini" />
-        <option value="$PROJECT_DIR$/inventory.py" />
-        <option value="$PROJECT_DIR$/inventoryctl.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/inventory.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/inventoryctl.py" />
       </list>
     </option>
   </component>
@@ -166,9 +173,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1280" />
-    <option name="height" value="728" />
+    <option name="x" value="-1100" />
+    <option name="y" value="-246" />
+    <option name="width" value="1177" />
+    <option name="height" value="995" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -231,8 +239,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,7 +283,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="728" extended-state="6" />
+    <frame x="-1100" y="-246" width="1177" height="995" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -284,7 +292,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30337077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18336026" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20881057" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1978233" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -319,27 +327,80 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#71#86#0" expanded="true" />
-            <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-            <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-            <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-            <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-            <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-            <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventoryctl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#71#86#0" expanded="true" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1140">
+            <caret line="76" column="112" lean-forward="false" selection-start-line="76" selection-start-column="112" selection-end-line="76" selection-end-column="112" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="127" column="8" lean-forward="false" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+          <folding>
+            <marker date="1509071600000" expanded="true" signature="4378:4423" ph="SELECT varia... group" />
+            <marker date="1509071600000" expanded="true" signature="5375:5398" ph="SELECT * FRO... inventory" />
+            <marker date="1509071600000" expanded="true" signature="6416:6749" ph="SELECT `gpar... childgroups" />
           </folding>
         </state>
       </provider>
@@ -350,27 +411,111 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#71#86#0" expanded="true" />
-            <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-            <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-            <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-            <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-            <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-            <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1140">
+            <caret line="76" column="112" lean-forward="false" selection-start-line="76" selection-start-column="112" selection-end-line="76" selection-end-column="112" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="127" column="8" lean-forward="false" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+          <folding>
+            <marker date="1509071600000" expanded="true" signature="4378:4423" ph="SELECT varia... group" />
+            <marker date="1509071600000" expanded="true" signature="5375:5398" ph="SELECT * FRO... inventory" />
+            <marker date="1509071600000" expanded="true" signature="6416:6749" ph="SELECT `gpar... childgroups" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventoryctl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#71#86#0" expanded="true" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventoryctl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#71#86#0" expanded="true" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
           </folding>
         </state>
       </provider>
@@ -388,27 +533,27 @@
           <caret line="68" column="81" lean-forward="false" selection-start-line="68" selection-start-column="81" selection-end-line="68" selection-end-column="81" />
           <folding>
             <element signature="e#71#86#0" expanded="true" />
-            <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-            <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-            <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-            <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-            <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-            <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
           </folding>
         </state>
       </provider>
@@ -426,27 +571,27 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#71#86#0" expanded="true" />
-            <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-            <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-            <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-            <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-            <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-            <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
           </folding>
         </state>
       </provider>
@@ -465,27 +610,27 @@
           <caret line="63" column="15" lean-forward="false" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="15" />
           <folding>
             <element signature="e#71#86#0" expanded="true" />
-            <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-            <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-            <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-            <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-            <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-            <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
           </folding>
         </state>
       </provider>
@@ -502,7 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
           <caret line="1078" column="8" lean-forward="false" selection-start-line="1078" selection-start-column="8" selection-end-line="1078" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -567,61 +711,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="229" column="36" lean-forward="false" selection-start-line="229" selection-start-column="36" selection-end-line="229" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inventory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="127" column="8" lean-forward="false" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
-          <folding>
-            <marker date="1508854351000" expanded="true" signature="4367:4412" ph="SELECT varia... group" />
-            <marker date="1508854351000" expanded="true" signature="5364:5387" ph="SELECT * FRO... inventory" />
-            <marker date="1508854351000" expanded="true" signature="6353:6686" ph="SELECT `gpar... childgroups" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inventoryctl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1209">
-          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding>
-            <element signature="e#71#86#0" expanded="true" />
-            <marker date="1508921751000" expanded="true" signature="7253:7302" ph="SELECT * FRO... group" />
-            <marker date="1508921751000" expanded="true" signature="7668:8149" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="8667:8814" ph="INSERT INTO `host`... " />
-            <marker date="1508921751000" expanded="true" signature="9057:9183" ph="INSERT INTO `hostgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="9465:9521" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9668:9708" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="9993:10053" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="10350:10408" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11268:11327" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="11767:11822" ph="UPDATE `host... " />
-            <marker date="1508921751000" expanded="true" signature="12611:13136" ph="SELECT `chil... group" />
-            <marker date="1508921751000" expanded="true" signature="13639:13742" ph="INSERT INTO `group`... " />
-            <marker date="1508921751000" expanded="true" signature="13984:14080" ph="INSERT INTO `childgroups`... " />
-            <marker date="1508921751000" expanded="true" signature="14418:14485" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="14714:14749" ph="DELETE FROM " />
-            <marker date="1508921751000" expanded="true" signature="15197:15246" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16047:16108" ph="UPDATE `grou... " />
-            <marker date="1508921751000" expanded="true" signature="16537:16600" ph="UPDATE `chil... " />
-            <marker date="1508921751000" expanded="true" signature="16979:17302" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="16979:17366" ph="SELECT `host... host" />
-            <marker date="1508921751000" expanded="true" signature="17419:17642" ph="SELECT * FRO... host" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="405">
+          <first_editor relative-caret-position="1140">
             <caret line="76" column="112" lean-forward="false" selection-start-line="76" selection-start-column="112" selection-end-line="76" selection-end-column="112" />
-            <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="188" column="0" lean-forward="true" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+          <folding>
+            <marker date="1509071600000" expanded="true" signature="4378:4423" ph="SELECT varia... group" />
+            <marker date="1509071600000" expanded="true" signature="5375:5398" ph="SELECT * FRO... inventory" />
+            <marker date="1509071600000" expanded="true" signature="6416:6749" ph="SELECT `gpar... childgroups" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="63" selection-end-column="64" />
+          <folding>
+            <element signature="e#46#64#0" expanded="true" />
+            <marker date="1509082372000" expanded="true" signature="1842:2161" ph="SELECT `gc`.... group" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inventoryctl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="491" column="44" lean-forward="false" selection-start-line="491" selection-start-column="44" selection-end-line="491" selection-end-column="44" />
+          <folding>
+            <element signature="e#71#86#0" expanded="true" />
+            <marker date="1509085678000" expanded="true" signature="7505:7554" ph="SELECT * FRO... group" />
+            <marker date="1509085678000" expanded="true" signature="7920:8401" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="8919:9066" ph="INSERT INTO `host`... " />
+            <marker date="1509085678000" expanded="true" signature="9309:9435" ph="INSERT INTO `hostgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="9717:9773" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="9920:9960" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="10245:10305" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="10602:10660" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="11520:11579" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12019:12074" ph="UPDATE `host... " />
+            <marker date="1509085678000" expanded="true" signature="12863:13388" ph="SELECT `chil... group" />
+            <marker date="1509085678000" expanded="true" signature="13891:13994" ph="INSERT INTO `group`... " />
+            <marker date="1509085678000" expanded="true" signature="14236:14332" ph="INSERT INTO `childgroups`... " />
+            <marker date="1509085678000" expanded="true" signature="14670:14737" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="14966:15001" ph="DELETE FROM " />
+            <marker date="1509085678000" expanded="true" signature="15449:15498" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16299:16360" ph="UPDATE `grou... " />
+            <marker date="1509085678000" expanded="true" signature="16789:16852" ph="UPDATE `chil... " />
+            <marker date="1509085678000" expanded="true" signature="17231:17572" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="17231:17628" ph="SELECT `host... host" />
+            <marker date="1509085678000" expanded="true" signature="18853:19237" ph="SELECT `gc`.... group" />
+          </folding>
         </state>
       </provider>
     </entry>

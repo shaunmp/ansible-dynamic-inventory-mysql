@@ -6,6 +6,7 @@ Created on 19/10/2017
 """
 import argparse
 import ast
+import collections
 import configparser
 import os
 import pprint
@@ -42,7 +43,6 @@ class InventoryCtl(object):
 
         config = configparser.ConfigParser()
         config.read(os.path.dirname(os.path.realpath(__file__)) + '/mysql.ini')
-
         self.myconfig = dict(config.items('server'))
         if 'port' in self.myconfig:
             self.myconfig['port'] = config.getint('server', 'port')
@@ -93,11 +93,16 @@ class InventoryCtl(object):
         parser_host.add_argument('-d', '--delete', action='store_true',
                                  help='Delete host')
         # List Hosts && Groups
-        parser_list = subparsers.add_parser('ls', help='List the Hosts or groups that match one or more patterns')
-        parser_list.add_argument('-a', '--all', action='store_true', help='List all, including disabled')
-        parser_list.add_argument('-g', '--group', action='store_true', help='Whether to show Groups or not')
-        parser_list.add_argument('-r', '--regular', help='Searching condition: regular expressions,default=*',
-                                 default='*')
+        parser_list = subparsers.add_parser('ls',
+                                            help='List the Hosts or groups information')
+        parser_list.add_argument('-g', '--group', action='store_true',
+                                 help='Whether to show Groups or not')
+        exclusion_group = parser_list.add_mutually_exclusive_group()
+        exclusion_group.add_argument('-a', '--all', action='store_true',
+                                     help='List all, including disabled')
+        exclusion_group.add_argument('-m', '--match',
+                                     help='list only matches a part of the \
+                                          `host` or `hostname` of host and `name` of group')
 
         if len(sys.argv[1:]) == 0:
             parser.print_help()
@@ -405,24 +410,107 @@ class InventoryCtl(object):
             print('If you want to UPDATE this group, plz attach -U/--update argument')
 
     def _list_hosts(self):
-        sql = """SELECT `host`.`host`,`host`.`hostname`,`host`.`variables` AS `vars`, 
+        sql = """SELECT `host`.`host`,`host`.`hostname`,`host`.`variables` AS `vars`,  `host`.`enabled`,
               `group`.`name` AS `group`,`group`.`variables` AS `group_vars` 
               FROM `host` 
               LEFT JOIN `hostgroups` ON `host`.id = `hostgroups`.`host_id` 
-              LEFT JOIN `group` ON `hostgroups`.`group_id` = `group`.`id`
-              WHERE `host`.`enabled` = 1 ORDER BY `host`.`host`;"""
+              LEFT JOIN `group` ON `hostgroups`.`group_id` = `group`.`id` 
+              {} 
+              ORDER BY `host`.`host`;"""
 
+        # default
+        where = "WHERE `host`.`enabled` = 1"
         if self.args.all:
-            sql = """SELECT * FROM `host` 
-                  LEFT JOIN `hostgroups` ON `host`.`id` = `hostgroups`.`host_id` 
-                  LEFT JOIN `group` ON `hostgroups`.`group_id` = `group`.`id` 
-                  ORDER BY `host`.`host`;"""
+            where = ''
+
+        if self.args.match is not None:
+            m = self.args.match
+            where = "WHERE `host`.`host` LIKE '%%%s%%' OR `host`.`hostname` LIKE '%%%s%%'" % (m, m)
+
+        sql = sql.format(where)
 
         self.__cursor.execute(sql)
-        pprint.pprint(self.__cursor.fetchall())
+        hosts = self.__cursor.fetchall()
+
+        # reformat
+        reformated = dict()
+        for host in hosts:
+            h_vars = None
+            g_vars = None
+            try:
+                if host['vars'] is not None:
+                    h_vars = json.loads(host['vars'])
+                if host['group_vars'] is not None:
+                    g_vars = json.loads(host['group_vars'])
+            except JSONDecodeError:
+                pass
+
+            reformated[host['host']] = {
+                'hostname': host['hostname'],
+                'vars': h_vars,
+                'group': host['group'],
+                'group_vars': g_vars}
+            if 'enabled' in host:
+                reformated[host['host']]['state'] = 'enable' if host['enabled'] == 1 else 'disable'
+
+        pprint.pprint(reformated)
 
     def _list_groups(self):
-        pass
+        sql = """SELECT `gc`.`name` as `child`,`gc`.`variables` as `c_vars`,
+        `gp`.`name` as `parent` ,`gp`.`variables` as `p_vars`
+        FROM `group` `gc`
+                      LEFT JOIN `childgroups` ON `gc`.`id` = `childgroups`.`child_id`
+                      LEFT JOIN `group` `gp` ON `childgroups`.`parent_id` = `gp`.`id`
+                      {}
+                      ORDER BY `parent`
+                      """
+        # default
+        where = "WHERE `gc`.`enabled` = 1 "
+        if self.args.all:
+            where = ''
+
+        if self.args.match is not None:
+            m = self.args.match
+            where = "WHERE `gc`.`name` LIKE '%%%s%%' OR `gp`.`name` LIKE '%%%s%%' " % (m, m)
+
+        self.__cursor.execute(sql.format(where))
+        groupsdata = self.__cursor.fetchall()
+
+        groups = [[{'name': g['child'], 'vars': self._loads_json(g['c_vars'])},
+                   {'name': g['parent'], 'vars': self._loads_json(g['p_vars'])} if g['parent'] is not None else None]
+                  for g in groupsdata]
+        pprint.pprint(self._construct_group_trees(groups))
+
+    @staticmethod
+    def _construct_group_trees(groups):
+        trees = dict()
+
+        for child, parent in groups:
+            if parent is not None:
+                parent_k = parent['name']
+                if parent_k not in trees:
+                    trees[parent_k] = parent
+
+                if 'children' not in trees[parent_k]:
+                    trees[parent_k]['children'] = list()
+                trees[parent_k]['children'].append(child)
+            else:
+                child_k = child['name']
+                if child_k not in trees:
+                    trees[child_k] = child
+        # pprint.pprint(trees)
+        return trees
+
+        # Find roots
+        # children, parents = map(list, zip(*groups))
+        # pprint.pprint(trees.keys())
+        # pprint.pprint(children)
+        # pprint.pprint(parents)
+        #
+        # roots = [children[k] for k, v in enumerate(parents) if v['name'] in trees.keys()]
+        # pprint.pprint(roots)
+        #
+        # return {root['name']: trees[root['name']] for root in roots}
 
     def _connect(self):
         if not self.conn:
@@ -447,6 +535,16 @@ class InventoryCtl(object):
         if self.cursor is None:
             self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         return self.cursor
+
+    @staticmethod
+    def _loads_json(json_str):
+        ret = None
+        if json_str is not None:
+            try:
+                ret = json.loads(json_str)
+            except JSONDecodeError as e:
+                pass
+        return ret
 
 
 InventoryCtl()
