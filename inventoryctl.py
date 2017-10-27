@@ -220,9 +220,10 @@ class InventoryCtl(object):
         print('Create mode')
 
         # combination variables
-        variables = json.dumps({item[0]: item[1] for item in self.args.variable})
-        if self.args.variable is None:
-            variables = None
+
+        variables = None
+        if self.args.variable is not None:
+            variables = json.dumps({item[0]: item[1] for item in self.args.variable})
 
         print('Add host: %s %s %s %d' % (self.args.host, self.__hostname, variables, self.__enabled))
         sql = """INSERT INTO `host` 
