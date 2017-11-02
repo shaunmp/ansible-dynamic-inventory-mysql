@@ -3,3 +3,5 @@ mysql.ini
 
 .vscode/*
 .idea/*
+ansible-dynamic-inventory-mysql
+dist
