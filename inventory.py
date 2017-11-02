@@ -28,15 +28,15 @@ import configparser
 import os
 import pprint
 import re
-from json import JSONDecodeError
 from time import time
-
 import pymysql.cursors
 
 try:
     import json
+    from json import JSONDecodeError
 except ImportError:
     import simplejson as json
+    from simplejson import JSONDecodeError
 
 
 class MySQLInventory(object):
