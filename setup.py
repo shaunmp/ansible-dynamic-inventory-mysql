@@ -10,7 +10,7 @@ setup(
     maintainer='ansible-dynamic-inventory-mysql',
     maintainer_email='',
     url='https://github.com/askdaddy/ansible-dynamic-inventory-mysql',
-    download_url='https://github.com/askdaddy/ansible-dynamic-inventory-mysql/archive/master.zip',
+    download_url='https://github.com/askdaddy/ansible-dynamic-inventory-mysql/archive/arya.zip',
     install_requires=[
         'configparser>=3.5.0',
         'PyMySQL>=0.7.11'
