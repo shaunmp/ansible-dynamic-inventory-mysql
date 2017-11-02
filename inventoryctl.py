@@ -11,14 +11,14 @@ import os
 import pprint
 import sys
 from distutils.util import strtobool
-from json import JSONDecodeError
-
 import pymysql
 
 try:
     import json
+    from json import JSONDecodeError
 except ImportError:
     import simplejson as json
+    from simplejson import JSONDecodeError
 
 VAR_DEL_MARK = 'nil'
 
