@@ -3,7 +3,6 @@ from distutils.core import setup
 setup(
     name='ansible-dynamic-inventory-mysql',
     packages=['ansible-dynamic-inventory-mysql'],
-    package_dir={'': '..'},
     version='0.1.0',
     python_requires='>=3',
     description='This is a Dynamic Inventory for Ansible to be used together with MySQL.',
