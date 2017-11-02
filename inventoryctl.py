@@ -6,7 +6,6 @@ Created on 19/10/2017
 """
 import argparse
 import ast
-import collections
 import configparser
 import os
 import pprint
@@ -130,7 +129,7 @@ class InventoryCtl(object):
             self._host_add(groupdata)
         else:
             # Delete host
-            if self.args.delete is True:
+            if 'delete' in self.args and self.args.delete is True:
                 if self._prompt("Are you sure you want to delete the host: %s[%s] ?! \
                                 \nAfter deleting the data will not be restored!! " % (
                         hostdata['host'], hostdata['hostname'])):
@@ -158,7 +157,7 @@ class InventoryCtl(object):
             groupdata = groups[gname]
 
             # Delete host
-            if self.args.delete is True:
+            if 'delete' in self.args and self.args.delete is True:
                 if self._prompt("Are you sure you want to delete the group: %s ?! \
                                 \nAfter deleting the data will not be restored!! " % gname):
                     self._group_delete(groupdata)
@@ -200,7 +199,7 @@ class InventoryCtl(object):
             self.__cursor.execute(sql % group)
             groupdata = self.__cursor.fetchone()
             if groupdata is None:
-                raise Exception('Group name does not exist. ', self.args.group)
+                print('Group %s does NOT exist!' % self.args.group)
             else:
                 print('Assign to group: %s [id=%d]' % (groupdata['name'], groupdata['id']))
 
@@ -257,9 +256,10 @@ class InventoryCtl(object):
             affected_rows = 0
 
             if group is not None:
-                sql = """UPDATE `hostgroups` SET `group_id` = %d WHERE `host_id` = %d;"""
-                affected_rows += self.__cursor.execute(sql % (group['id'], host['id']))
-                print('set group to %d' % host['group'])
+                # sql = """UPDATE `hostgroups` SET `group_id` = %d WHERE `host_id` = %d;"""
+                sql = """REPLACE into `hostgroups` (`host_id`,`group_id`) values(%d,%d)"""
+                affected_rows += self.__cursor.execute(sql % (host['id'], group['id']))
+                print('set group to %s' % group['name'])
 
             # update hostname
             if self.args.name is not None:
@@ -371,9 +371,10 @@ class InventoryCtl(object):
 
         if self.args.update:
             print('Update mode')
-            # modify enabled
-            sql = """UPDATE `group` SET `enabled` = %d WHERE `id` = %d;"""
-            affected_rows += self.__cursor.execute(sql % (self.args.enabled, group['id']))
+            if group['enabled'] != self.__enabled:
+                # modify enabled
+                sql = """UPDATE `group` SET `enabled` = %d WHERE `id` = %d;"""
+                affected_rows += self.__cursor.execute(sql % (self.args.enabled, group['id']))
 
             # modify variables
             if self.args.variable is not None:
