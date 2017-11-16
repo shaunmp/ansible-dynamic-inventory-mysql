@@ -134,14 +134,16 @@ class MySQLInventory(object):
             cursor.execute(sql, groupname)
             groupinfo = cursor.fetchone()
             self.inventory[groupname] = dict()
-            if groupinfo is not None and groupinfo['variables'] and groupinfo['variables'].strip():
-                try:
-                    vs = json.loads(groupinfo['variables'])
-                    self.inventory[groupname]['vars'] = vs if vs is not None else {}
-                    self.inventory[groupname]['hosts'] = list()
-                except JSONDecodeError as e:
-                    print(e)
-                    raise Exception('Group does not have valid JSON', groupname, groupinfo['variables'])
+
+            if groupinfo is not None and 'variables' in groupinfo:
+                if groupinfo['variables'] and not self.isNone(groupinfo['variables']) and groupinfo['variables'].strip():
+                    try:
+                        vs = json.loads(groupinfo['variables'])
+                        self.inventory[groupname]['vars'] = vs if vs is not None else {}
+                        self.inventory[groupname]['hosts'] = list()
+                    except JSONDecodeError as e:
+                        print(e)
+                        raise Exception('Group does not have valid JSON', groupname, groupinfo['variables'])
 
             if 'vars' not in self.inventory[groupname]:
                 self.inventory[groupname] = list()
@@ -269,6 +271,12 @@ class MySQLInventory(object):
             return json.dumps(data, sort_keys=True, indent=2)
         else:
             return json.dumps(data)
+
+    @staticmethod
+    def isNone(var):
+        if (type(var) is str):
+            return var.lower() == 'none'
+        return var is None
 
 
 MySQLInventory()
