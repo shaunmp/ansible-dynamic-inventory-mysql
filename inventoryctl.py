@@ -332,9 +332,9 @@ class InventoryCtl(object):
         print('Create mode')
 
         # combination variables
-        variables = json.dumps({item[0]: item[1] for item in self.args.variable})
-        if self.args.variable is None:
-            variables = None
+        variables = None
+        if self.args.variable is not None:
+            variables = json.dumps({item[0]: item[1] for item in self.args.variable})
 
         sql = """INSERT INTO `group` (`name`, `variables`, `enabled`) 
                           VALUES ('%s', '%s', %d);"""
