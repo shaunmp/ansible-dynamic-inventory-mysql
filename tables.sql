@@ -61,17 +61,17 @@ AS SELECT
    `gparent`.`name` AS `parent`,
    `gchild`.`name` AS `child`
 FROM ((`childgroups` left join `group` `gparent` on((`childgroups`.`parent_id` = `gparent`.`id`))) left join `group` `gchild` on((`childgroups`.`child_id` = `gchild`.`id`))) order by `gparent`.`name`;
-CREATE VIEW  `ungrouped`
-AS SELECT
-        `host`.`host` AS `host`,
-        `host`.`hostname` AS `hostname`,
-        `host`.`variables` AS `host_vars`
-    FROM
-        (`host`
-        LEFT JOIN `hostgroups` ON ((`host`.`id` = `hostgroups`.`host_id`)))
-    WHERE
-        ISNULL(`hostgroups`.`group_id`)
-    ORDER BY `host`.`hostname`
+-- CREATE VIEW  `ungrouped`
+-- AS SELECT
+--         `host`.`host` AS `host`,
+--         `host`.`hostname` AS `hostname`,
+--         `host`.`variables` AS `host_vars`
+--     FROM
+--         (`host`
+--         LEFT JOIN `hostgroups` ON ((`host`.`id` = `hostgroups`.`host_id`)))
+--     WHERE
+--         ISNULL(`hostgroups`.`group_id`)
+--     ORDER BY `host`.`hostname`
 
 -- Create syntax for VIEW 'inventory' ,New inventory with ungrouped --
 CREATE VIEW `inventory`
