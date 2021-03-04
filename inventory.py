@@ -23,26 +23,34 @@ Extended upon the Cobbler Inventory script.
 ######################################################################
 
 import argparse
-import ConfigParser
+import ast
+import configparser
 import os
+import pprint
 import re
 from time import time
 import pymysql.cursors
 
 try:
     import json
+    from json import JSONDecodeError
 except ImportError:
     import simplejson as json
+    from simplejson import JSONDecodeError
 
-from six import iteritems
 
 class MySQLInventory(object):
-
     def __init__(self):
 
         """ Main execution path """
         self.conn = None
+        self.myconfig = None
+        self.cache_path_cache = None
+        self.cache_path_inventory = None
+        self.cache_max_age = None
+        self.facts_hostname_var = None
 
+        self.hosts = dict()
         self.inventory = dict()  # A list of groups and the hosts in that group
         self.cache = dict()  # Details about hosts in the inventory
 
@@ -65,7 +73,7 @@ class MySQLInventory(object):
         if self.args.host:
             data_to_print += self.get_host_info()
         else:
-            self.inventory['_meta'] = { 'hostvars': {} }
+            self.inventory['_meta'] = {'hostvars': {}}
             for hostname in self.cache:
                 self.inventory['_meta']['hostvars'][hostname] = self.cache[hostname]
             data_to_print += self.json_format_dict(self.inventory, True)
@@ -91,7 +99,7 @@ class MySQLInventory(object):
     def read_settings(self):
         """ Reads the settings from the mysql.ini file """
 
-        config = ConfigParser.SafeConfigParser()
+        config = configparser.ConfigParser()
         config.read(os.path.dirname(os.path.realpath(__file__)) + '/mysql.ini')
 
         self.myconfig = dict(config.items('server'))
@@ -114,7 +122,8 @@ class MySQLInventory(object):
         parser.add_argument('--list', action='store_true', default=True, help='List instances (default: True)')
         parser.add_argument('--host', action='store', help='Get all the variables about a specific instance')
         parser.add_argument('--refresh-cache', action='store_true', default=False,
-                            help='Force refresh of cache by making API requests to MySQL (default: False - use cache files)')
+                            help='Force refresh of cache by making API requests to MySQL \
+                            (default: False - use cache files)')
         self.args = parser.parse_args()
 
     def process_group(self, groupname):
@@ -125,15 +134,19 @@ class MySQLInventory(object):
             cursor.execute(sql, groupname)
             groupinfo = cursor.fetchone()
             self.inventory[groupname] = dict()
-            if groupinfo['variables'] and groupinfo['variables'].strip():
-                try:
-                   self.inventory[groupname]['vars'] = json.loads(groupinfo['variables'])
-                   self.inventory[groupname]['hosts'] = list()
-                except:
-                   raise Exception('Group does not have valid JSON', groupname, groupinfo['variables'])
+
+            if groupinfo is not None and 'variables' in groupinfo:
+                if groupinfo['variables'] and not self.isNone(groupinfo['variables']) and groupinfo['variables'].strip():
+                    try:
+                        vs = json.loads(groupinfo['variables'])
+                        self.inventory[groupname]['vars'] = vs if vs is not None else {}
+                        self.inventory[groupname]['hosts'] = list()
+                    except JSONDecodeError as e:
+                        print(e)
+                        raise Exception('Group does not have valid JSON', groupname, groupinfo['variables'])
 
             if 'vars' not in self.inventory[groupname]:
-               self.inventory[groupname] = list()
+                self.inventory[groupname] = list()
 
     def update_cache(self):
         """ Make calls to MySQL and save the output in a cache """
@@ -156,17 +169,17 @@ class MySQLInventory(object):
                 self.inventory[host['group']].append(host['host'])
 
             dns_name = host['host']
-            if host['host_vars'] and host['host_vars'].strip():
+            if host['host_vars'] and ast.literal_eval(host['host_vars']) is not None and host['host_vars'].strip():
                 try:
-                   cleanhost = json.loads(host['host_vars'])
-                except:
-                   raise Exception('Host does not have valid JSON', host['host'], host['host_vars'])
+                    cleanhost = json.loads(host['host_vars'])
+                except JSONDecodeError as e:
+                    print(e)
+                    raise Exception('Host does not have valid JSON', host['host'], host['host_vars'])
             else:
                 cleanhost = dict()
             cleanhost[self.facts_hostname_var] = host['hostname']
 
             self.cache[dns_name] = cleanhost
-            self.inventory = self.inventory
 
         # first fetch all the groups to check for possible childs
         gsql = """SELECT
@@ -192,7 +205,7 @@ class MySQLInventory(object):
 
         # cleanup output
         for group in self.inventory:
-            if not self.inventory[group]['hosts']:
+            if 'hosts' in self.inventory[group] and not self.inventory[group]['hosts']:
                 del self.inventory[group]['hosts']
 
         self.write_to_cache(self.cache, self.cache_path_cache)
@@ -244,17 +257,26 @@ class MySQLInventory(object):
         cache.write(json_data)
         cache.close()
 
-    def to_safe(self, word):
+    @staticmethod
+    def to_safe(word):
         """ Converts 'bad' characters in a string to underscores so they can be used as Ansible groups """
 
         return re.sub("[^A-Za-z0-9\-]", "_", word)
 
-    def json_format_dict(self, data, pretty=False):
+    @staticmethod
+    def json_format_dict(data, pretty=False):
         """ Converts a dict to a JSON object and dumps it as a formatted string """
 
         if pretty:
             return json.dumps(data, sort_keys=True, indent=2)
         else:
             return json.dumps(data)
+
+    @staticmethod
+    def isNone(var):
+        if (type(var) is str):
+            return var.lower() == 'none'
+        return var is None
+
 
 MySQLInventory()

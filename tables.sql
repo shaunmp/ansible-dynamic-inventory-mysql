@@ -47,13 +47,13 @@ CREATE TABLE `hostgroups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- Create syntax for VIEW 'inventory'
-CREATE VIEW `inventory`
-AS SELECT
-   `group`.`name` AS `group`,
-   `host`.`host` AS `host`,
-   `host`.`hostname` AS `hostname`,
-   `host`.`variables` AS `host_vars`
-FROM (`group` left join (`host` left join `hostgroups` on((`host`.`id` = `hostgroups`.`host_id`))) on((`hostgroups`.`group_id` = `group`.`id`))) where ((`host`.`enabled` = 1) and (`group`.`enabled` = 1)) order by `host`.`hostname`;
+-- CREATE VIEW `inventory`
+-- AS SELECT
+--    `group`.`name` AS `group`,
+--    `host`.`host` AS `host`,
+--    `host`.`hostname` AS `hostname`,
+--    `host`.`variables` AS `host_vars`
+-- FROM (`group` left join (`host` left join `hostgroups` on((`host`.`id` = `hostgroups`.`host_id`))) on((`hostgroups`.`group_id` = `group`.`id`))) where ((`host`.`enabled` = 1) and (`group`.`enabled` = 1)) order by `host`.`hostname`;
 
 -- Create syntax for VIEW 'children'
 CREATE VIEW `children`
@@ -61,3 +61,32 @@ AS SELECT
    `gparent`.`name` AS `parent`,
    `gchild`.`name` AS `child`
 FROM ((`childgroups` left join `group` `gparent` on((`childgroups`.`parent_id` = `gparent`.`id`))) left join `group` `gchild` on((`childgroups`.`child_id` = `gchild`.`id`))) order by `gparent`.`name`;
+-- CREATE VIEW  `ungrouped`
+-- AS SELECT
+--         `host`.`host` AS `host`,
+--         `host`.`hostname` AS `hostname`,
+--         `host`.`variables` AS `host_vars`
+--     FROM
+--         (`host`
+--         LEFT JOIN `hostgroups` ON ((`host`.`id` = `hostgroups`.`host_id`)))
+--     WHERE
+--         ISNULL(`hostgroups`.`group_id`)
+--     ORDER BY `host`.`hostname`
+
+-- Create syntax for VIEW 'inventory' ,New inventory with ungrouped --
+CREATE VIEW `inventory`
+AS (SELECT
+   `group`.`name` AS `group`,
+   `host`.`host` AS `host`,
+   `host`.`hostname` AS `hostname`,
+   `host`.`variables` AS `host_vars`
+FROM (`group` left join (`host` left join `hostgroups` ON ((`host`.`id` = `hostgroups`.`host_id`))) ON ((`hostgroups`.`group_id` = `group`.`id`)))
+WHERE `host`.`enabled` = 1 AND `group`.`enabled` = 1)
+UNION
+(SELECT
+'ungrouped' AS `group`,
+`host`.`host` AS `host`,
+`host`.`hostname` AS `hostname`,
+`host`.`variables` AS `host_vars`
+FROM `host` LEFT JOIN `hostgroups` ON  `host`.`id` = `hostgroups`.`host_id`
+WHERE `hostgroups`.`group_id` IS NULL);

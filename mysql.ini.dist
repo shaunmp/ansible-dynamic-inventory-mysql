@@ -1,8 +1,9 @@
 # Ansible MySQL external inventory script settings
+# Copy it and rename to mysql.ini
 #
 
+# MySQL Server
 [server]
-
 host = YOURHOST
 user = YOURUSER
 passwd = YOURPASSWORD
