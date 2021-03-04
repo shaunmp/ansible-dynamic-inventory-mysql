@@ -244,7 +244,7 @@ class InventoryCtl(object):
         rows = self.__cursor.execute("""DELETE FROM `hostgroups` WHERE `hostgroups`.`host_id` = %d;""" % host['id'])
         print('Affected rows: %d' % rows)
 
-        print('Delete host: id = %d' % id)
+        print('Delete host: id = %d' % host['id'])
         rows = self.__cursor.execute("""DELETE FROM `host` WHERE `host`.`id`  = %d;""" % host['id'])
         print('Affected rows: %d' % rows)
 
